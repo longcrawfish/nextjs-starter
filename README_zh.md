@@ -35,10 +35,11 @@
 
 ### 环境要求
 
-- Node.js 20.9 或更高版本
-- pnpm 9.0 或更高版本（推荐）
+- Node.js 20 或更高版本，低于 25 (`>=20 <25`)
+- Corepack，现代 Node.js 版本已内置
+- pnpm 10.12.4，由 `packageManager` 字段解析
 
-> **注意**: 项目已配置 `packageManager` 字段，推荐使用 pnpm 以获得最佳体验。
+> **注意**: 推荐通过 Corepack 使用 pnpm，确保所有人都使用固定的 `pnpm@10.12.4` 版本。
 
 ### 安装步骤
 
@@ -51,28 +52,35 @@ cd nextjs-starter
 2. 启用 Corepack (推荐):
 ```bash
 corepack enable
+corepack prepare pnpm@10.12.4 --activate
 ```
 
 3. 安装依赖:
 ```bash
 pnpm install
-# 或使用其他包管理器
-npm install
-yarn
 ```
 
 4. 复制环境变量文件:
 ```bash
-cp .env.example .env
+cp -f .env.example .env
 ```
 
 5. 启动开发服务器:
 ```bash
 pnpm dev
-# 或 npm run dev
 ```
 
 访问 http://localhost:3000 查看你的应用。
+
+### 常用命令
+
+```bash
+pnpm install   # 安装依赖
+pnpm dev       # 启动本地开发服务器
+pnpm lint      # 运行 ESLint
+pnpm build     # 创建生产构建
+pnpm start     # 在 pnpm build 后启动生产服务器
+```
 
 ## ⚙️ 配置
 
@@ -205,17 +213,23 @@ pnpm start
 
 - 项目已配置 `packageManager: "pnpm@10.12.4"`
 - 建议启用 Corepack: `corepack enable`
-- 团队成员应使用相同版本的 pnpm
+- 激活固定的 pnpm 版本: `corepack prepare pnpm@10.12.4 --activate`
+- 团队成员应使用相同版本的 pnpm，并避免提交其他包管理器生成的 lockfile 变更
 
 ### 代码规范
 
 ```bash
 # 代码检查
 pnpm lint
-
-# 类型检查
-pnpm type-check
 ```
+
+### Corepack 和 pnpm 故障排除
+
+- 如果找不到 `pnpm` 命令，运行 `corepack enable` 后打开新的 shell。
+- 如果 pnpm shim 仍不可用，可以使用 `corepack pnpm install` 或 `corepack pnpm dev`。
+- 如果 Corepack 选择了错误的 pnpm 版本，运行 `corepack prepare pnpm@10.12.4 --activate`。
+- 如果安装时出现 `Ignored build scripts` 提示，请先检查列出的依赖，再按需运行 `pnpm approve-builds`。
+- 如果生产构建在受限沙箱中因为 Turbopack 绑定端口失败，请在允许本地 worker 进程的环境中重新运行同一命令。
 
 ### 多语言开发
 
@@ -293,5 +307,4 @@ MIT
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G6TWWMG)
 
 <img src="./public/zs.jpeg" alt="赞赏作者" style="height: 200px; width: 200px">
-
 
