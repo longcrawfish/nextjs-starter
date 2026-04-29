@@ -38,10 +38,11 @@ A feature-rich Next.js 16 multilingual starter template to help you quickly buil
 
 ### Prerequisites
 
-- Node.js 20.9 or higher
-- pnpm 9.0 or higher (recommended)
+- Node.js 20 or higher, below 25 (`>=20 <25`)
+- Corepack, included with modern Node.js releases
+- pnpm 10.12.4, resolved from the `packageManager` field
 
-> **Note**: The project has configured `packageManager` field, we recommend using pnpm for the best experience.
+> **Note**: Use pnpm through Corepack so everyone gets the pinned `pnpm@10.12.4` version.
 
 ### Installation
 
@@ -54,28 +55,35 @@ cd nextjs-starter
 2. Enable Corepack (recommended):
 ```bash
 corepack enable
+corepack prepare pnpm@10.12.4 --activate
 ```
 
 3. Install dependencies:
 ```bash
 pnpm install
-# or use other package managers
-npm install
-yarn
 ```
 
 4. Copy environment variables:
 ```bash
-cp .env.example .env
+cp -f .env.example .env
 ```
 
 5. Start the development server:
 ```bash
 pnpm dev
-# or npm run dev
 ```
 
 Visit http://localhost:3000 to view your application.
+
+### Common Commands
+
+```bash
+pnpm install   # install dependencies
+pnpm dev       # start the local development server
+pnpm lint      # run ESLint
+pnpm build     # create a production build
+pnpm start     # start the production server after pnpm build
+```
 
 ## ⚙️ Configuration
 
@@ -207,17 +215,23 @@ pnpm start
 
 - Project configured with `packageManager: "pnpm@10.12.4"`
 - Enable Corepack: `corepack enable`
-- Team members should use the same pnpm version
+- Activate the pinned pnpm version: `corepack prepare pnpm@10.12.4 --activate`
+- Team members should use the same pnpm version and avoid committing lockfile changes from other package managers
 
 ### Code Quality
 
 ```bash
 # Lint code
 pnpm lint
-
-# Type checking
-pnpm type-check
 ```
+
+### Troubleshooting Corepack And pnpm
+
+- If `pnpm` is not found, run `corepack enable` and open a new shell.
+- If the pnpm shim still is not available, use `corepack pnpm install` or `corepack pnpm dev`.
+- If Corepack selects the wrong pnpm version, run `corepack prepare pnpm@10.12.4 --activate`.
+- If install logs `Ignored build scripts`, review the package list before running `pnpm approve-builds`.
+- If a production build fails in a restricted sandbox with a Turbopack port-binding error, rerun the same command in an environment that allows local worker processes.
 
 ### Internationalization Development
 
