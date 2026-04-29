@@ -1,14 +1,3 @@
----
-Ship your SaaS faster with Nexty
-
-NEXTY.DEV is a comprehensive Next.js SaaS boilerplate that provides everything developers need to rapidly build and launch modern AI web applications
-
-Try [NEXTY.DEV today](https://nexty.dev?utm_source=github-nextjs-starter)
----
-
-[<img src="/public/try-nexty.webp">](https://nexty.dev?utm_source=github-nextjs-starter)
-
-
 🌍 *[English](README.md) ∙ [简体中文](README_zh.md) ∙ [日本語](README_ja.md)*
 
 # Next.js Starter - Multilingual Next.js 16 Starter
