@@ -75,9 +75,7 @@ export const NewsletterWelcomeEmail: React.FC<
         updates and news about {siteConfig.name}.
       </p>
 
-      <p style={styles.paragraph}>
-        We're excited to have you on board!
-      </p>
+      <p style={styles.paragraph}>We&apos;re excited to have you on board!</p>
 
       <div style={styles.footer}>
         <p style={styles.footerText}>
@@ -95,4 +93,3 @@ export const NewsletterWelcomeEmail: React.FC<
 );
 
 export default NewsletterWelcomeEmail;
-

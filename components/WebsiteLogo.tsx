@@ -1,6 +1,6 @@
 "use client";
 import { getDomain } from "@/lib/utils";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 interface IProps {
   url: string;
@@ -21,18 +21,33 @@ const WebsiteLogo = ({
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
-  const fallbackSources = [
-    `https://${domain}/logo.svg`,
-    `https://${domain}/logo.png`,
-    `https://${domain}/apple-touch-icon.png`,
-    `https://${domain}/apple-touch-icon-precomposed.png`,
-    `https://www.google.com/s2/favicons?domain=${domain}&sz=64`,
-    `https://icons.duckduckgo.com/ip3/${domain}.ico`,
-    `https://${domain}/favicon.ico`,
-  ];
+  const fallbackSources = useMemo(
+    () => [
+      `https://${domain}/logo.svg`,
+      `https://${domain}/logo.png`,
+      `https://${domain}/apple-touch-icon.png`,
+      `https://${domain}/apple-touch-icon-precomposed.png`,
+      `https://www.google.com/s2/favicons?domain=${domain}&sz=64`,
+      `https://icons.duckduckgo.com/ip3/${domain}.ico`,
+      `https://${domain}/favicon.ico`,
+    ],
+    [domain],
+  );
+
+  const handleError = useCallback(() => {
+    const nextIndex = fallbackIndex + 1;
+    if (nextIndex < fallbackSources.length) {
+      setFallbackIndex(nextIndex);
+      setImgSrc(fallbackSources[nextIndex]);
+      setIsLoading(true);
+    } else {
+      setHasError(true);
+      setIsLoading(false);
+    }
+  }, [fallbackIndex, fallbackSources]);
 
   useEffect(() => {
-    let timeoutId: any;
+    let timeoutId: NodeJS.Timeout | undefined;
 
     if (isLoading) {
       timeoutId = setTimeout(() => {
@@ -45,19 +60,7 @@ const WebsiteLogo = ({
         clearTimeout(timeoutId);
       }
     };
-  }, [imgSrc, isLoading]);
-
-  const handleError = () => {
-    const nextIndex = fallbackIndex + 1;
-    if (nextIndex < fallbackSources.length) {
-      setFallbackIndex(nextIndex);
-      setImgSrc(fallbackSources[nextIndex]);
-      setIsLoading(true);
-    } else {
-      setHasError(true);
-      setIsLoading(false);
-    }
-  };
+  }, [handleError, imgSrc, isLoading, timeout]);
 
   const handleLoad = () => {
     setIsLoading(false);

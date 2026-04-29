@@ -32,6 +32,7 @@ export function LanguageDetectionAlert() {
   }, [dismissLanguageAlert]);
 
   useEffect(() => {
+    let visibilityTimer: NodeJS.Timeout | undefined;
     const detectedLang = navigator.language; // Get full language code, e.g., zh_HK
     const storedDismiss = getLangAlertDismissed();
 
@@ -44,11 +45,17 @@ export function LanguageDetectionAlert() {
       }
 
       if (supportedLang && supportedLang !== locale) {
-        setDetectedLocale(supportedLang);
-        setShowLanguageAlert(true);
-        setTimeout(() => setIsVisible(true), 100);
+        visibilityTimer = setTimeout(() => {
+          setDetectedLocale(supportedLang);
+          setShowLanguageAlert(true);
+          setTimeout(() => setIsVisible(true), 100);
+        }, 0);
       }
     }
+
+    return () => {
+      if (visibilityTimer) clearTimeout(visibilityTimer);
+    };
   }, [locale, getLangAlertDismissed, setShowLanguageAlert]);
 
   useEffect(() => {
@@ -67,7 +74,8 @@ export function LanguageDetectionAlert() {
 
   useEffect(() => {
     if (countdown === 0 && showLanguageAlert) {
-      handleDismiss();
+      const dismissTimer = setTimeout(handleDismiss, 0);
+      return () => clearTimeout(dismissTimer);
     }
   }, [countdown, showLanguageAlert, handleDismiss]);
 
