@@ -79,6 +79,7 @@ const WebsiteLogo = ({
         </div>
       )}
 
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={imgSrc}
         alt={`${domain} logo`}

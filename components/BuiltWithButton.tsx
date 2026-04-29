@@ -31,6 +31,7 @@ export default function BuiltWithButton() {
 
 function LogoNexty({ className }: { className?: string }) {
   return (
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       src="/logo_nexty.png"
       alt="Logo"

@@ -8,6 +8,7 @@ export default function Badges() {
         title="Featured on FirstLook.Tools"
         target="_blank"
       >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="https://firstlook.tools/badge/badge_light.svg"
           alt="Featured on FirstLook.Tools"

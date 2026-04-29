@@ -67,6 +67,7 @@ export default async function BlogPage({ params }: { params: Params }) {
     <div className="w-full md:w-3/5 px-2 md:px-12">
       <h1 className="break-words text-4xl font-bold mt-6 mb-4">{post.title}</h1>
       {post.image && (
+        // eslint-disable-next-line @next/next/no-img-element
         <img src={post.image} alt={post.title} className="rounded-sm" />
       )}
       {post.tags && post.tags.split(",").length ? (

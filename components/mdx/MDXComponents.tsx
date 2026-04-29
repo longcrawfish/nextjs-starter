@@ -93,7 +93,12 @@ const MDXComponents: MDXComponentsProps = {
     />
   ),
   img: (props) => (
-    <img className="rounded-lg border-2 border-gray-200 my-6" {...props} />
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      alt=""
+      className="rounded-lg border-2 border-gray-200 my-6"
+      {...props}
+    />
   ),
   strong: (props) => <strong className="font-bold" {...props} />,
   table: (props) => (

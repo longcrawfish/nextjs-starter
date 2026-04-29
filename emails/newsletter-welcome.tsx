@@ -60,6 +60,7 @@ export const NewsletterWelcomeEmail: React.FC<
   <div style={styles.container}>
     <div style={styles.card}>
       <div style={styles.logo}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`${siteConfig.url}/logo.png`}
           alt={siteConfig.name}
