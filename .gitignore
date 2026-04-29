@@ -137,7 +137,7 @@ dist
 *.db
 .beads-credential-key
 
-.beads/
+###### .beads/
 
 .codex/
 .codex
