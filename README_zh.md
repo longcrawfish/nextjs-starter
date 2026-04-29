@@ -1,11 +1,3 @@
----
-使用 Nexty 加速 SaaS 开发 - 唯一一个集成可视化定价面板、AI 开发环境和企业级 CMS 的 Next.js 模板，还包含多语言支持、身份验证、支付系统、电子邮件功能和 SEO 优化。
-
-立即体验 [NEXTY.DEV](https://nexty.dev/?utm_source=github-nextjs-starter)
----
-
-[<img src="/public/try-nexty.webp">](https://nexty.dev/?utm_source=github-nextjs-starter)
-
 🌍 *[English](README.md) ∙ [简体中文](README_zh.md) ∙ [日本语](README_ja.md)*
 
 # Next.js Starter - 多语言 Next.js 16 启动模板
@@ -185,11 +177,6 @@ nextjs-starter/
 
 
 ## 🚀 部署
-
-### 一键部署
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/weijunext/nextjs-starter&project-name=&repository-name=nextjs-starter&demo-title=NextjsStarter&demo-description=Nextjs%2015%20starter.&demo-url=https://nextjsstarter.io&demo-image=https://nextjsstarter.io/og.png)
-
 ### 手动部署到 Vercel
 
 1. 推送代码到 GitHub
@@ -286,25 +273,3 @@ cp .env.example .env
 ## 📄 许可证
 
 MIT
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request！
-
-## 关于作者
-
-专注于 Next.js 全栈开发，欢迎探讨开发、咨询与培训等合作机会，联系微信：bigye_chengpu
-
-- [Github](https://github.com/weijunext)
-- [Twitter/X](https://twitter.com/weijunext)
-- [博客 - J实验室](https://weijunext.com)
-- [Medium](https://medium.com/@weijunext)
-- [掘金](https://juejin.cn/user/26044008768029)
-- [知乎](https://www.zhihu.com/people/mo-mo-mo-89-12-11)
-
-<a href="https://www.buymeacoffee.com/weijunext" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
-
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G6TWWMG)
-
-<img src="./public/zs.jpeg" alt="赞赏作者" style="height: 200px; width: 200px">
-
