@@ -82,3 +82,15 @@ bd close <id>         # Complete work
 - NEVER say "ready to push when you are" - YOU must push
 - If push fails, resolve and retry until it succeeds
 <!-- END BEADS INTEGRATION -->
+
+## Beads task tracking
+
+Use `bd` for task tracking.
+
+Rules:
+- Run `bd ready` before starting work.
+- Work on one Beads issue at a time.
+- Before closing an issue, run its acceptance commands.
+- Add a comment with test results before closing.
+- Do not batch unrelated changes into one issue.
+
